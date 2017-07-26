@@ -25,3 +25,5 @@ function run_wp_team_meta_manager() {
 
 run_wp_team_meta_manager();
 
+ // Grabs the inserted post data so you can modify it.
+
