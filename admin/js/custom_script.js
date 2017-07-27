@@ -78,8 +78,8 @@ jQuery(document).ready(function( $ ) {
 		slidesToShow: 2,
 		slidesToScroll: 2,
 		autoplay : false,
-		prevArrow : 'none',
-        nextArrow : 'none',
+		prevArrow : "<i class='controller wp-team-prev fa fa-angle-left' aria-hidden='true'></i>",
+        nextArrow : "<i class='controller wp-team-next fa fa-angle-right' aria-hidden='true'></i>",
         responsive: [
 		    {
 		      breakpoint: 1024,

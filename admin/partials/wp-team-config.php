@@ -1,5 +1,9 @@
 <?php
 $file = plugin_dir_path( __FILE__ ) . '../js/custom_script.js';
+if($prev_arrow != "none")
+	$prev_arrow = "<i class='controller wp-team-prev fa ".$prev_arrow. "' aria-hidden='true'></i>";
+if($next_arrow != "none")
+	$next_arrow = "<i class='controller wp-team-next fa ".$next_arrow. "' aria-hidden='true'></i>";
 $config = <<<CONFIG
 jQuery(document).ready(function( $ ) {
 	
@@ -81,8 +85,8 @@ jQuery(document).ready(function( $ ) {
 		slidesToShow: $slides_to_show,
 		slidesToScroll: $slides_to_scroll,
 		autoplay : $autoplay,
-		prevArrow : '$prev_arrow',
-        nextArrow : '$next_arrow',
+		prevArrow : "$prev_arrow",
+        nextArrow : "$next_arrow",
         responsive: [
 		    {
 		      breakpoint: 1024,

@@ -170,6 +170,7 @@ class WP_Team_Manager_Admin {
 	 */
 	public function wp_team_shortcode($atts = [], $content = null, $tag = '')
 	{
+		echo $atts['prev_arrow'];
 		// normalize attribute keys, lowercase
 		$atts = array_change_key_case((array)$atts, CASE_LOWER);
 

@@ -22,6 +22,7 @@ ul,li{
 	width: 100%;
 	border: 1px solid #e3e3e3;
 	box-shadow: 0px 0px 10px #e3e3e3;
+	background-color: #fff;
 	border-radius: 3px;
 	margin-top: 10px;
 	overflow: hidden;
@@ -57,7 +58,7 @@ ul,li{
 .member-caption .team-member-title{
 	font-size: 16px !important;
 	font-family: RalewayBold;
-    margin-top: 15px 0px !important;
+    margin-top: 15px 0px;
 }
 .member-skill{
 	height: 10px;
@@ -181,6 +182,31 @@ ul,li{
 .memer-social ul li:hover a{
 	background-color: #808080;
 	color: #fff;
+}
+
+/*Wp Team Prev and Next*/
+.controller{
+	font-size: 40px;
+	padding: 5px 10px;
+	background-color: rgba(0, 0, 0, 0.3);
+	cursor: pointer;
+	color: #fff;
+	position: absolute;
+	top: 50%;
+	z-index: 99999;
+	-webkit-transform : translateY(-50%);
+	transform : translateY(-50%);
+	opacity: 0;
+}
+.team-items:hover .controller{
+	opacity: 1;
+}
+.wp-team-prev{
+	left: 15px;
+}
+
+.wp-team-next{
+	right: 15px;
 }
 
 /*Slick*/
