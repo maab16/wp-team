@@ -150,6 +150,12 @@ class WP_Team_Meta_Manager_Admin {
 	{
 
 	    add_shortcode('wp-team', array($this,'wp_team_shortcode'));
+	 //    add_filter( 'the_excerpt', 'wp_team_shortcode');
+		// add_filter( 'the_excerpt', 'do_shortcode');
+		// add_filter( 'widget_text', 'wp_team_shortcode');
+		// add_filter( 'widget_text', 'do_shortcode');
+		// add_filter( 'term_description', 'wp_team_shortcode');
+		// add_filter( 'term_description', 'do_shortcode' );
 	}
 
 	public function wp_team_shortcode($atts = [], $content = null, $tag = ''){
