@@ -16,14 +16,7 @@ if ( ! defined( 'WPINC' ) ) {
 
 require_once plugin_dir_path( __FILE__ ) . 'includes/class-wp-team-meta-manager.php';
 
-function run_wp_team_meta_manager() {
 
-	$spmm = new WP_Team_Meta_Manager();
-	$spmm->run();
+WP_Team_Meta_Manager::load();
 
-}
-
-run_wp_team_meta_manager();
-
- // Grabs the inserted post data so you can modify it.
 

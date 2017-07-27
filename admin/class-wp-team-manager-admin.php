@@ -1,13 +1,12 @@
 <?php
 
-class WP_Team_Meta_Manager_Admin {
+class WP_Team_Manager_Admin {
 
-	private $version;
-
-	public function __construct( $version ) {
-		$this->version = $version;
-	}
-
+	/**
+	 * Register Admin/Dashboard Script and Styles
+	 * @param No
+	 * @return void
+	 */
 	public function admin_enqueue_styles() {
 
 		wp_enqueue_style(
@@ -15,10 +14,14 @@ class WP_Team_Meta_Manager_Admin {
 			plugin_dir_url( __FILE__ ) . 'css/wp-team-meta-manager-admin.css',
 			array(),
 			$this->version,
-			'all'
+			FALSE
 		);
 	}
-
+	/**
+	 * Register Public Script and Styles
+	 * @param No
+	 * @return void
+	 */
 	public function wp_enqueue_styles(){
 		wp_enqueue_style(
 			'wp-team-slick-theme',
@@ -48,7 +51,9 @@ class WP_Team_Meta_Manager_Admin {
 			$this->version,
 			'all'
 		);
-
+		/*
+		 * Register Script
+		 */
 		wp_enqueue_script(
 			'script',
 			plugin_dir_url( __FILE__ ) . 'js/jquery.min.js',
@@ -79,48 +84,47 @@ class WP_Team_Meta_Manager_Admin {
 		);
 	}
 
+	/**
+	 * Register Custom Meta Boxes
+	 * @param No
+	 * @return void
+	 */
 	public function add_meta_box() {
 
 		add_meta_box(
-			'wp-team-meta-manager-admin',
-			'Wp Team Meta Manager',
-			array( $this, 'render_meta_box' ),
-			'post',
-			'normal',
-			'core'
-		);
-
-	}
-
-	public function render_meta_box() {
-		require_once plugin_dir_path( __FILE__ ) . 'partials/wp-team-meta-manager.php';
-	}
-
-	public function add_wp_team_custom_meta_box()
-	{
-		add_meta_box(
 			"wp-team-meta-box", 
-			"Add New Team", 
+			"Add Team Menmer", 
 			array($this,"wp_team_meta_box_markup"), 
 			"wp-team", 
 			"normal", 
 			"core"
 		);
+
 	}
 
+	/**
+	 * Render WP Team Meta Box Markup
+	 * @param No
+	 * @return void
+	 */
 	public function wp_team_meta_box_markup($object)
 	{
-		wp_nonce_field( plugin_basename( __FILE__ ), 'wp-team' );
 		require_once plugin_dir_path( __FILE__ ) . 'partials/wp-team-meta-box.php';
+		wp_nonce_field( plugin_basename( __FILE__ ), 'wp-team' );
 	}
 
+	/**
+	 * Add WP Team Custom Post 
+	 * @param No
+	 * @return void
+	 */
 	public function wp_team_custom_post_type()
 	{
 		$labels = [
 			"name" => __("Teams"),
 			"singular_name" => __("Team"),
 			"all_items" 	=> __("All Teams"),
-			"add_new" 		=> __("Add Team"),
+			"add_new" 		=> __("Add Member"),
 			"add_new_item"  => __(" "),
 			"edit_item" 	=> __("Edit Team"),
 			"new_item"		=> __("New Team"),
@@ -146,26 +150,59 @@ class WP_Team_Meta_Manager_Admin {
 		);
 	}
 
-	public function wp_team_shortcodes_init()
+	/**
+	 * Add Short Codes
+	 * @param No
+	 * @return void
+	 */
+	public function add_shortcodes()
 	{
 
 	    add_shortcode('wp-team', array($this,'wp_team_shortcode'));
-	 //    add_filter( 'the_excerpt', 'wp_team_shortcode');
-		// add_filter( 'the_excerpt', 'do_shortcode');
-		// add_filter( 'widget_text', 'wp_team_shortcode');
-		// add_filter( 'widget_text', 'do_shortcode');
-		// add_filter( 'term_description', 'wp_team_shortcode');
-		// add_filter( 'term_description', 'do_shortcode' );
 	}
 
-	public function wp_team_shortcode($atts = [], $content = null, $tag = ''){
+	/**
+	 * Add Wp Team Short Code
+	 * @param array $atts
+	 * @param string $content
+	 * @param string $tag
+	 * @return void
+	 */
+	public function wp_team_shortcode($atts = [], $content = null, $tag = '')
+	{
+		// normalize attribute keys, lowercase
+		$atts = array_change_key_case((array)$atts, CASE_LOWER);
 
-
+		// override default attributes with user attributes
+		extract(shortcode_atts(
+					[
+		                'title' 				=> 'Team',
+		                'dots' 					=> 'true',
+		                'infinite'				=> 'true',
+		                'autoplay'				=> 'true',
+		                'prevArrow'				=> 'none',
+		                'nextArrow'				=> 'none',
+		                'slides_to_show' 		=> 2,
+		                'slides_to_scroll'		=> 2,
+		                'md_slides_to_show'		=> 2,
+		                'md_slides_to_scroll'	=> 2,
+		                'sm_slides_to_show'		=> 2,
+		                'sm_slides_to_scroll'	=> 2,
+		                'xs_slides_to_show'		=> 1,
+		                'xs_slides_to_scroll'	=> 1
+		            ], 
+		            $atts, 
+		            $tag
+		        ));
 		require_once plugin_dir_path( __FILE__ ) . 'partials/wp-team-shortcode.php'; 
+		require_once plugin_dir_path( __FILE__ ) . 'partials/wp-team-config.php'; 
 	}
 
-	/* Callback to Save Meta Data */
-
+	/**
+	 * Save Wp Team Meta Data
+	 * @param integer $post_id
+	 * @return void
+	 */
 	public function wp_team_save_meta_data($post_id)
 	{
 
@@ -179,11 +216,11 @@ class WP_Team_Meta_Manager_Admin {
 		if(defined("DOING_AUTOSAVE") && DOING_AUTOSAVE)
 			return $post_id;
 
-		if (!isset($_POST['wp-team-name']) || $_POST['wp-team-name'] == "") {
+		if (!isset($_POST['wp-team-member-name']) || $_POST['wp-team-member-name'] == "") {
             return;
         }
 
-        if (!isset($_POST['wp-team-title']) || $_POST['wp-team-title'] == "") {
+        if (!isset($_POST['wp-team-member-title']) || $_POST['wp-team-member-title'] == "") {
             return;
         }
 
@@ -196,11 +233,16 @@ class WP_Team_Meta_Manager_Admin {
 		}
 	}
 
+	/**
+	 * Change Wp Team Title auto draft to Team Member Name
+	 * @param array $data
+	 * @return array $data
+	 */
 	public function wp_team_change_title( $data )
 	{
 	  if ( isset($_POST['wp-team']) && wp_verify_nonce( $_POST['wp-team'], plugin_basename(__FILE__) ))
 
-	    $data['post_title'] =  $_POST['wp-team-name']; 
+	    $data['post_title'] =  $_POST['wp-team-member-name']; 
 	  
 	  return $data; 
 	}

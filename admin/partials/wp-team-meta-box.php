@@ -1,22 +1,22 @@
 <div class="wp-team-container">
       <div class="form-group">
-            <label for="wp-team-name">Author</label>
+            <label for="wp-team-member-name">Author</label>
             <input 
-                  name="wp-team-name" 
-                  id="wp-team-name" 
+                  name="wp-team-member-name" 
+                  id="wp-team-member-name" 
                   type="text" 
-                  value="<?php echo get_post_meta($object->ID, "wp-team-name", true); ?>"
+                  value="<?php echo get_post_meta($object->ID, "wp-team-member-name", true); ?>"
                   placeholder="Enter Name"
             >
             <strong><span>*</span>Required</strong>
       </div>
       <div class="form-group">
-            <label for="wp-team-title">Title</label>
+            <label for="wp-team-member-title">Title</label>
             <input 
-                  name="wp-team-title" 
-                  id="wp-team-title" 
+                  name="wp-team-member-title" 
+                  id="wp-team-member-title" 
                   type="text" 
-                  value="<?php echo get_post_meta($object->ID, "wp-team-title", true); ?>"
+                  value="<?php echo get_post_meta($object->ID, "wp-team-member-title", true); ?>"
                   placeholder="Enter Title"
             >
             <strong><span>*</span>Required</strong>

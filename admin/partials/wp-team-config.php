@@ -1,3 +1,6 @@
+<?php
+$file = plugin_dir_path( __FILE__ ) . '../js/custom_script.js';
+$config = <<<CONFIG
 jQuery(document).ready(function( $ ) {
 	
   /*
@@ -73,19 +76,19 @@ jQuery(document).ready(function( $ ) {
 	});
 	/*Team Slick*/
 	$('.team-items').slick({
-		dots: true,
-		infinite: true,
-		slidesToShow: 2,
-		slidesToScroll: 2,
-		autoplay : false,
-		prevArrow : 'none',
-        nextArrow : 'none',
+		dots: $dots,
+		infinite: $infinite,
+		slidesToShow: $slides_to_show,
+		slidesToScroll: $slides_to_scroll,
+		autoplay : $autoplay,
+		prevArrow : '$prevArrow',
+        nextArrow : '$nextArrow',
         responsive: [
 		    {
 		      breakpoint: 1024,
 		      settings: {
-		        slidesToShow: 2,
-		        slidesToScroll: 2,
+		        slidesToShow: $md_slides_to_show,
+		        slidesToScroll: $md_slides_to_scroll,
 		        infinite: true,
 		        dots: true
 		      }
@@ -93,18 +96,26 @@ jQuery(document).ready(function( $ ) {
 		    {
 		      breakpoint: 600,
 		      settings: {
-		        slidesToShow: 2,
-		        slidesToScroll: 2
+		        slidesToShow: $sm_slides_to_show,
+		        slidesToScroll: $sm_slides_to_scroll
 		      }
 		    },
 		    {
 		      breakpoint: 480,
 		      settings: {
-		        slidesToShow: 1,
-		        slidesToScroll: 1
+		        slidesToShow: $xs_slides_to_show,
+		        slidesToScroll: $xs_slides_to_scroll
 		      }
 		    }
 	  ]
 	});
 	
 });
+CONFIG;
+// The new person to add to the file
+
+// Write the contents to the file, 
+// using the FILE_APPEND flag to append the content to the end of the file
+// and the LOCK_EX flag to prevent anyone else writing to the file at the same time
+file_put_contents($file, $config);
+?>

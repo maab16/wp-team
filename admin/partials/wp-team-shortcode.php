@@ -1,21 +1,9 @@
 <?php
-// normalize attribute keys, lowercase
-$atts = array_change_key_case((array)$atts, CASE_LOWER);
-
-// override default attributes with user attributes
-extract(shortcode_atts(
-			[
-                'title' => 'WordPress.org',
-            ], 
-            $atts, 
-            $tag
-        ));
 
 //get your custom posts ids as an array
 $ids = get_posts(array(
     'post_type'   => 'wp-team',
     'post_status' => 'publish',
-    'posts_per_page' => -1,
     'fields' => 'ids'
     )
 );
@@ -24,17 +12,19 @@ $ids = get_posts(array(
 <!-- End Work Section -->
 	<section class="team" id="team"><!-- Start Team Section -->
 		<div class="container">
-			<h2 class="team-head title text-center">Our <strong>Team</strong></h2>
+			<h2 class="team-head title text-center"><strong><?php echo esc_html($title);?></strong></h2>
 			<div class="row team-items text-center">
 				<?php
 				foreach($ids as $id){
-				    $name = get_post_meta($id,"wp-team-name",true);
-				    $title = get_post_meta($id,"wp-team-title",true);
+
+				    $name = get_post_meta($id,"wp-team-member-name",true);
+				    $title = get_post_meta($id,"wp-team-member-title",true);
 				    
-				    // Skill
+				    // Skill Name
 				    $skill_name_1 = get_post_meta($id,'wp-team-skill-1-name',true);
 				    $skill_name_2 = get_post_meta($id,'wp-team-skill-2-name',true);
 				    $skill_name_3 = get_post_meta($id,'wp-team-skill-3-name',true);
+				    // Skill Percentage
 				    $skill_percent_1 = get_post_meta($id,'wp-team-skill-1-value',true);
 				    $skill_percent_2 = get_post_meta($id,'wp-team-skill-2-value',true);
 				    $skill_percent_3 = get_post_meta($id,'wp-team-skill-3-value',true);
