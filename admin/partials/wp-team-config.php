@@ -81,8 +81,8 @@ jQuery(document).ready(function( $ ) {
 		slidesToShow: $slides_to_show,
 		slidesToScroll: $slides_to_scroll,
 		autoplay : $autoplay,
-		prevArrow : '$prevArrow',
-        nextArrow : '$nextArrow',
+		prevArrow : '$prev_arrow',
+        nextArrow : '$next_arrow',
         responsive: [
 		    {
 		      breakpoint: 1024,

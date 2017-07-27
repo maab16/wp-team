@@ -121,16 +121,16 @@ class WP_Team_Manager_Admin {
 	public function wp_team_custom_post_type()
 	{
 		$labels = [
-			"name" => __("Teams"),
-			"singular_name" => __("Team"),
-			"all_items" 	=> __("All Teams"),
-			"add_new" 		=> __("Add Member"),
-			"add_new_item"  => __(" "),
-			"edit_item" 	=> __("Edit Team"),
-			"new_item"		=> __("New Team"),
-			"view_item" 	=> __("View Team"),
-			"search_item" 	=> __("Search Team"),
-			"not_found" 	=> __("No items found"),
+			"name" 					=> __("Teams"),
+			"singular_name" 		=> __("Team"),
+			"all_items" 			=> __("All Teams"),
+			"add_new" 				=> __("Add Member"),
+			"add_new_item"  		=> __(" "),
+			"edit_item" 			=> __("Edit Team"),
+			"new_item"				=> __("New Team"),
+			"view_item" 			=> __("View Team"),
+			"search_item" 			=> __("Search Team"),
+			"not_found" 			=> __("No items found"),
 			"not_found_in_trash" 	=> __("No items found in trash"),
 			"parent_item_colon" 	=> __("Parent Team"),
 
@@ -138,14 +138,14 @@ class WP_Team_Manager_Admin {
 
 		];
 		register_post_type("wp-team", array(
-				"labels" => $labels,
-				"public" => true, 
-				"has_archive" => true,
-				"rewrite" => array("slug"=> "team"),
-				"supports" => array("thumbnail"),
-				"capability_type" => "post",
-				"publicly_queryable" => true,
-				"taxonomies" => array(""),
+				"labels" 				=> $labels,
+				"public" 				=> true, 
+				"has_archive" 			=> true,
+				"rewrite" 				=> array("slug"=> "team"),
+				"supports" 				=> array("thumbnail"),
+				"capability_type" 		=> "post",
+				"publicly_queryable" 	=> true,
+				"taxonomies" 			=> array(""),
 			)
 		);
 	}
@@ -176,20 +176,20 @@ class WP_Team_Manager_Admin {
 		// override default attributes with user attributes
 		extract(shortcode_atts(
 					[
-		                'title' 				=> 'Team',
-		                'dots' 					=> 'true',
-		                'infinite'				=> 'true',
-		                'autoplay'				=> 'true',
-		                'prevArrow'				=> 'none',
-		                'nextArrow'				=> 'none',
-		                'slides_to_show' 		=> 2,
-		                'slides_to_scroll'		=> 2,
-		                'md_slides_to_show'		=> 2,
-		                'md_slides_to_scroll'	=> 2,
-		                'sm_slides_to_show'		=> 2,
-		                'sm_slides_to_scroll'	=> 2,
-		                'xs_slides_to_show'		=> 1,
-		                'xs_slides_to_scroll'	=> 1
+		                'title' 					=> 'Team',
+		                'dots' 						=> 'true',
+		                'infinite'					=> 'true',
+		                'autoplay'					=> 'false',
+		                'prev_arrow'				=> 'none',
+		                'next_arrow'				=> 'none',
+		                'slides_to_show' 			=> 2,
+		                'slides_to_scroll'			=> 2,
+		                'md_slides_to_show'			=> 2,
+		                'md_slides_to_scroll'		=> 2,
+		                'sm_slides_to_show'			=> 2,
+		                'sm_slides_to_scroll'		=> 2,
+		                'xs_slides_to_show'			=> 1,
+		                'xs_slides_to_scroll'		=> 1
 		            ], 
 		            $atts, 
 		            $tag

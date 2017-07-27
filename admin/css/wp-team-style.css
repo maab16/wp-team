@@ -116,24 +116,26 @@ ul,li{
 	font-size: 16px !important;
     margin: 0px !important;
     position: relative;
-    padding: 10px 0px;
+    padding: 8px 0px;
     font-family: RalewayBold;
 }
 .team-member-name:after{
 	position: absolute;
-	bottom: 0;
-	left: 35%;
-	content: '';
-	width: 80px;
-	height: 2px;
+    bottom: 0;
+    left: 50%;
+    content: '';
+    width: 60px;
+    height: 2px;
+    background-color: #ff4081;
+    transform: translateX(-50%);
 }
 .team-member-title{
 	font-size: 12px !important;
 	margin: 0px !important;
-	padding: 0px !important;
+	padding: 5px 0px !important;
 }
 .member-desc{
-	padding: 0px 15px;
+	text-align: center;
 }
 .member-caption .member-desc{
 	text-align: center;
@@ -157,12 +159,13 @@ ul,li{
 }
 .memer-social ul li{
 	float: left;
-	margin-left: 20px;
+	margin-left: 10px;
 }
 .memer-social ul li:first-child{
 	margin-left: 0px;
 }
 .memer-social ul li a{
+	font-size: 16px;
 	text-decoration: none;
 	transform : rotate(-45deg);
 	width: 30px;
