@@ -9,15 +9,15 @@
 # Installation only 3 steps
 
 ## 1. Install plugin
-	* Download or clone plugin
-	* Save under plugins folder(wp-content/plugins/)
-	* unzip plugin
-	* Go to dashboard plugins and activate plugin
+* Download or clone plugin
+* Save under plugins folder(wp-content/plugins/)
+* unzip plugin
+* Go to dashboard plugins and activate plugin
 
 ## 2. Add Member
-	* Click Team menu
-	* Add new member
-	* Publish or Update Member
+* Click Team menu
+* Add new member
+* Publish or Update Member
 
 ## 3. Use Shortcode
 
