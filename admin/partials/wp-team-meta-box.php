@@ -1,6 +1,6 @@
 <div class="wp-team-container">
       <div class="form-group">
-            <label for="wp-team-member-name">Author</label>
+            <label for="wp-team-member-name">Name</label>
             <input 
                   name="wp-team-member-name" 
                   id="wp-team-member-name" 

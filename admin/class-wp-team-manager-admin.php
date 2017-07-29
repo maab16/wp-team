@@ -11,7 +11,7 @@ class WP_Team_Manager_Admin {
 
 		wp_enqueue_style(
 			'wp-team-meta-manager-admin',
-			plugin_dir_url( __FILE__ ) . 'css/wp-team-meta-manager-admin.css',
+			plugin_dir_url( __FILE__ ) . 'css/wp-team-admin.css',
 			array(),
 			$this->version,
 			FALSE
