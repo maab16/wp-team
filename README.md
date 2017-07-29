@@ -6,7 +6,20 @@
 
 ![Alt text](http://i.imgur.com/eqY7WQ0.png "Optional title")
 
-# Use Shortcode
+# Installation only 3 steps
+
+## 1. Install plugin
+	* Download or clone plugin
+	* Save under plugins folder(wp-content/plugins/)
+	* unzip plugin
+	* Go to dashboard plugins and activate plugin
+
+## 2. Add Member
+	* Click Team menu
+	* Add new member
+	* Publish or Update Member
+
+## 3. Use Shortcode
 
 * Intialize - `[wp-team]`
 * Title - `[wp-team title="Your Title"]`
@@ -27,7 +40,7 @@
 	* Xtra-Small device - `[wp-team xs_scroll="1"]`
 
 
-## Use multiple attributes
+### Use multiple attributes
 
 ```
 [wp-team title="Your title" autoplay="true" dots="false"]
