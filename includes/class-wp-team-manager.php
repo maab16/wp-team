@@ -13,12 +13,25 @@ class WP_Team_Manager {
 	protected $loader;
 
 	/**
+	 * @var string $basePath
+	 */
+	public $basePath;
+
+	/**
+	 * @var string $baseDir
+	 */
+	public $baseDir;
+
+	/**
 	 * Load Dependencies
 	 * Register Hooks
 	 * @param No
 	 * @return void
 	 */
 	public function __construct() {
+
+		$this->baseDir = plugin_dir_path( dirname( __FILE__ ) );
+		$this->baseName = plugin_basename($this->baseDir. '/wp-team.php');
 
 		$this->load_dependencies();
 		$this->prepare_hooks();
@@ -33,7 +46,7 @@ class WP_Team_Manager {
 	 */
 	private function load_dependencies() {
 
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-wp-team-manager-admin.php';
+		require_once $this->baseDir . 'admin/class-wp-team-manager-admin.php';
 
 		require_once plugin_dir_path( __FILE__ ) . 'class-wp-team-manager-loader.php';
 
@@ -56,9 +69,12 @@ class WP_Team_Manager {
 		$this->loader->add_action( 'init', $this->admin, 'wp_team_custom_post_type');
 		$this->loader->add_action( 'init',$this->admin,'add_shortcodes');
 		$this->loader->add_action( 'save_post',$this->admin,'wp_team_save_meta_data');
+		$this->loader->add_action( 'admin_init', $this->admin ,'wp_team_register_settings' );
+		$this->loader->add_action('admin_menu', $this->admin ,'wp_team_register_options_page');
 		// Add Filter Hook
 		$this->loader->add_filter( 'wp_insert_post_data' ,$this->admin,'wp_team_change_title');
 		$this->loader->add_filter( 'widget_text',$this->admin,'do_shortcode');
+		$this->loader->add_filter( "plugin_action_links_".$this->baseName , $this->admin , 'add_plugin_settings_link' );
 	}
 
 	public static function load() {

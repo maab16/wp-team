@@ -15,8 +15,8 @@
 * Go to dashboard plugins and activate plugin
 
 ## 2. Add Member
-* Click Team menu
-* Add new member
+* Click Teams menu
+* Add member
 * Publish or Update Member
 
 ## 3. Use Shortcode

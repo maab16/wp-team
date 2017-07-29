@@ -35,3 +35,28 @@
 	color: red;
 	margin-right: 5px;
 }
+
+/*Settings*/
+
+.settings-form-group{
+	width: 100%;
+	height: 100%;
+	float: left;
+}
+.settings_label{
+	width: 20%;
+	height: 40px;
+	float: left;
+	margin-right: 15px;
+}
+.settings_label span{
+	float: right;
+}
+.settings_field{
+	width: 60%;
+	height: 40px;
+	float: left;
+}
+.settings_field input{
+	margin-left: 15px;
+}

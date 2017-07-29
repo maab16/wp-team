@@ -170,27 +170,27 @@ class WP_Team_Manager_Admin {
 	 */
 	public function wp_team_shortcode($atts = [], $content = null, $tag = '')
 	{
-		echo $atts['prev_arrow'];
+		global $new_whitelist_options;
 		// normalize attribute keys, lowercase
 		$atts = array_change_key_case((array)$atts, CASE_LOWER);
 
 		// override default attributes with user attributes
 		extract(shortcode_atts(
 					[
-		                'title' 		=> 'Team',
-		                'dots' 			=> 'true',
-		                'infinite'		=> 'true',
-		                'autoplay'		=> 'false',
-		                'prev'			=> 'none',
-		                'next'			=> 'none',
-		                'slides' 		=> 2,
-		                'scroll'		=> 2,
-		                'md_slides'		=> 2,
-		                'md_scroll'		=> 2,
-		                'sm_slides'		=> 2,
-		                'sm_scroll'		=> 2,
-		                'xs_slides'		=> 1,
-		                'xs_scroll'		=> 1
+		                'title' 		=> get_option('title'),
+		                'dots' 			=> get_option('dots'),
+		                'infinite'		=> get_option('infinite'),
+		                'autoplay'		=> get_option('autoplay'),
+		                'prev'			=> get_option('prev'),
+		                'next'			=> get_option('next'),
+		                'slides' 		=> get_option('slides'),
+		                'scroll'		=> get_option('scroll'),
+		                'md_slides'		=> get_option('md_slides'),
+		                'md_scroll'		=> get_option('md_scroll'),
+		                'sm_slides'		=> get_option('sm_slides'),
+		                'sm_scroll'		=> get_option('sm_scroll'),
+		                'xs_slides'		=> get_option('xs_slides'),
+		                'xs_scroll'		=> get_option('xs_scroll')
 		            ], 
 		            $atts, 
 		            $tag
@@ -246,6 +246,38 @@ class WP_Team_Manager_Admin {
 	    $data['post_title'] =  $_POST['wp-team-member-name']; 
 	  
 	  return $data; 
+	}
+
+	public function wp_team_register_settings() {
+
+		// if ( !isset($_POST['wp-team-setting']) || ! wp_verify_nonce( $_POST['wp-team-setting'], plugin_basename(__FILE__) ) ) 
+		// 	return;
+
+		// if(defined("DOING_AUTOSAVE") && DOING_AUTOSAVE)
+		// 	return;
+
+		foreach ($_POST as $key => $value) {
+			if($key == 'submit')
+				continue;
+			add_option( $key, $value);
+			register_setting( 'wp_team_options_group', $key, 'myplugin_callback' );
+		}
+	}
+
+	public function wp_team_register_options_page() {
+	  add_options_page('WP Team', 'Team Settings', 'manage_options', 'wp-team', [$this , 'wp_team_options_page']);
+	}
+
+	public function wp_team_options_page()
+	{
+	  require_once plugin_dir_path( __FILE__ ) . 'partials/wp-team-settings.php'; 
+	}
+
+
+	public function add_plugin_settings_link( $links ) {
+	    $settings_link = '<a href="options-general.php?page=wp-team">' . __( 'Settings' ) . '</a>';
+	    array_push( $links, $settings_link );
+	  	return $links;
 	}
 
 }
