@@ -77,7 +77,7 @@ jQuery(document).ready(function( $ ) {
 		infinite: true,
 		slidesToShow: 2,
 		slidesToScroll: 2,
-		autoplay : false,
+		autoplay : true,
 		prevArrow : "none",
         nextArrow : "none",
         responsive: [

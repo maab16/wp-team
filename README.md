@@ -8,10 +8,24 @@
 
 # Use Shortcode
 
-* Intialize - [wp-team]
-* Dots Navigation - [wp-team dots="true"]
-* autoplay - [wp-team autoplay="false"]
-* infinite slides - [wp-team infinite="true"]
+* Intialize - `[wp-team]`
+* Title - `[wp-team title="Your Title"]`
+* Dots Navigation - `[wp-team dots="true"]`
+* autoplay - `[wp-team autoplay="false"]`
+* infinite slides - `[wp-team infinite="true"]`
+* Prev Button Class - `[wp-team prev="font_awesome_icon_class_name"]`
+* Next Button Class - `[wp-team next="font_awesome_icon_class_name"]`
+* How many Slides to show at a time
+	* Large device - `[wp-team slides="2"]`
+	* Medium device - `[wp-team md_slides="2"]`
+	* Small device - `[wp-team sm_slides="2"]`
+	* Xtra-Small device - `[wp-team xs_slides="1"]`
+* How many Slides to Move at a time when autoplay or grabbing
+	* Large device - `[wp-team scroll="2"]`
+	* Medium device - `[wp-team md_scroll="2"]`
+	* Small device - `[wp-team sm_scroll="2"]`
+	* Xtra-Small device - `[wp-team xs_scroll="1"]`
+
 
 ## Use multiple attributes
 

@@ -82,17 +82,17 @@ jQuery(document).ready(function( $ ) {
 	$('.team-items').slick({
 		dots: $dots,
 		infinite: $infinite,
-		slidesToShow: $slides_to_show,
-		slidesToScroll: $slides_to_scroll,
+		slidesToShow: $slides,
+		slidesToScroll: $scroll,
 		autoplay : $autoplay,
-		prevArrow : "$prev_arrow",
-        nextArrow : "$next_arrow",
+		prevArrow : "$prev",
+        nextArrow : "$next",
         responsive: [
 		    {
 		      breakpoint: 1024,
 		      settings: {
-		        slidesToShow: $md_slides_to_show,
-		        slidesToScroll: $md_slides_to_scroll,
+		        slidesToShow: $md_slides,
+		        slidesToScroll: $md_scroll,
 		        infinite: true,
 		        dots: true
 		      }
@@ -100,15 +100,15 @@ jQuery(document).ready(function( $ ) {
 		    {
 		      breakpoint: 600,
 		      settings: {
-		        slidesToShow: $sm_slides_to_show,
-		        slidesToScroll: $sm_slides_to_scroll
+		        slidesToShow: $sm_slides,
+		        slidesToScroll: $sm_scroll
 		      }
 		    },
 		    {
 		      breakpoint: 480,
 		      settings: {
-		        slidesToShow: $xs_slides_to_show,
-		        slidesToScroll: $xs_slides_to_scroll
+		        slidesToShow: $xs_slides,
+		        slidesToScroll: $xs_scroll
 		      }
 		    }
 	  ]

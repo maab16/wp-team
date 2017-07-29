@@ -177,20 +177,20 @@ class WP_Team_Manager_Admin {
 		// override default attributes with user attributes
 		extract(shortcode_atts(
 					[
-		                'title' 					=> 'Team',
-		                'dots' 						=> 'true',
-		                'infinite'					=> 'true',
-		                'autoplay'					=> 'false',
-		                'prev_arrow'				=> 'none',
-		                'next_arrow'				=> 'none',
-		                'slides_to_show' 			=> 2,
-		                'slides_to_scroll'			=> 2,
-		                'md_slides_to_show'			=> 2,
-		                'md_slides_to_scroll'		=> 2,
-		                'sm_slides_to_show'			=> 2,
-		                'sm_slides_to_scroll'		=> 2,
-		                'xs_slides_to_show'			=> 1,
-		                'xs_slides_to_scroll'		=> 1
+		                'title' 		=> 'Team',
+		                'dots' 			=> 'true',
+		                'infinite'		=> 'true',
+		                'autoplay'		=> 'false',
+		                'prev'			=> 'none',
+		                'next'			=> 'none',
+		                'slides' 		=> 2,
+		                'scroll'		=> 2,
+		                'md_slides'		=> 2,
+		                'md_scroll'		=> 2,
+		                'sm_slides'		=> 2,
+		                'sm_scroll'		=> 2,
+		                'xs_slides'		=> 1,
+		                'xs_scroll'		=> 1
 		            ], 
 		            $atts, 
 		            $tag
