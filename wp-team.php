@@ -14,9 +14,9 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
-require_once plugin_dir_path( __FILE__ ) . 'includes/class-wp-team-meta-manager.php';
+require_once plugin_dir_path( __FILE__ ) . 'includes/class-wp-team-manager.php';
 
 
-WP_Team_Meta_Manager::load();
+WP_Team_Manager::load();
 
 

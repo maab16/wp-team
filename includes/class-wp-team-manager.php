@@ -1,6 +1,6 @@
 <?php
 
-class WP_Team_Meta_Manager {
+class WP_Team_Manager {
 
 	/**
 	 * @var object $admin
@@ -35,7 +35,7 @@ class WP_Team_Meta_Manager {
 
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-wp-team-manager-admin.php';
 
-		require_once plugin_dir_path( __FILE__ ) . 'class-wp-team-meta-manager-loader.php';
+		require_once plugin_dir_path( __FILE__ ) . 'class-wp-team-manager-loader.php';
 
 		$this->admin = new WP_Team_Manager_Admin();
 		
@@ -62,7 +62,7 @@ class WP_Team_Meta_Manager {
 	}
 
 	public static function load() {
-		new WP_Team_Meta_Manager();
+		new WP_Team_Manager();
 	}
 
 	public function get_version() {
