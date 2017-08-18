@@ -23,12 +23,19 @@ class WP_Team_Manager {
 	public $baseDir;
 
 	/**
+	 * @var string $version
+	 */
+	public $version;
+
+	/**
 	 * Load Dependencies
 	 * Register Hooks
 	 * @param No
 	 * @return void
 	 */
-	public function __construct() {
+	public function __construct($version) {
+
+		$this->version = $version;
 
 		$this->baseDir = plugin_dir_path( dirname( __FILE__ ) );
 		$this->baseName = plugin_basename($this->baseDir. '/wp-team.php');
@@ -50,7 +57,7 @@ class WP_Team_Manager {
 
 		require_once plugin_dir_path( __FILE__ ) . 'class-wp-team-manager-loader.php';
 
-		$this->admin = new WP_Team_Manager_Admin();
+		$this->admin = new WP_Team_Manager_Admin($this->version);
 		
 		$this->loader = new WP_Team_Manager_Loader();
 
@@ -77,11 +84,11 @@ class WP_Team_Manager {
 		$this->loader->add_filter( "plugin_action_links_".$this->baseName , $this->admin , 'add_plugin_settings_link' );
 	}
 
-	public static function load() {
-		new WP_Team_Manager();
+	public static function load($version = '1.0') {
+		new WP_Team_Manager($version);
 	}
 
-	public function get_version() {
+	public function getVersion() {
 		return $this->version;
 	}
 

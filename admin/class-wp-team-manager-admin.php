@@ -3,6 +3,16 @@
 class WP_Team_Manager_Admin {
 
 	/**
+	 * @param version
+	 */
+	protected $version;
+
+	public function __construct($version = 1.0)
+	{
+		$this->version = $version;
+	}
+
+	/**
 	 * Register Admin/Dashboard Script and Styles
 	 * @param No
 	 * @return void
